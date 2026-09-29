@@ -1,0 +1,36 @@
+server:
+  port: ${SERVER_PORT:8761}
+
+spring:
+  application:
+    name: service-registry
+
+eureka:
+  client:
+    # The registry itself never needs to register with or fetch from another registry
+    register-with-eureka: false
+    fetch-registry: false
+  instance:
+    hostname: ${EUREKA_INSTANCE_HOSTNAME:localhost}
+  server:
+    # Keep self-preservation ON (the default) for a small, low-traffic cluster -
+    # turning it off + tuning eviction aggressively causes healthy nodes to be
+    # evicted on routine heartbeat gaps. See the deployment guide's troubleshooting
+    # appendix if a service "disappears" from the dashboard - it is usually just
+    # the normal ~90s lease-renewal cycle, not a real failure.
+    enable-self-preservation: ${EUREKA_SELF_PRESERVATION:true}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+  endpoint:
+    health:
+      show-details: always
+
+logging:
+  file:
+    name: /var/log/pulsefit/service-registry.log
+  level:
+    root: INFO
