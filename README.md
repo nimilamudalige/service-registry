@@ -52,5 +52,5 @@ part of this repo) for the full GCP deployment walkthrough.
 
 - **Student Name:** Pasan Nimila
 - **Student Number:** 2301692034
-- **Slack Handle:** pasan_nimila (optional)
+- **Slack Handle:** pasan_nimila
 - **GCP Project ID:** pulsefit-capstone
